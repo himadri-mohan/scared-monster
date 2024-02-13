@@ -77,10 +77,11 @@
             var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
             light.intensity = 0.7;
 
-            BABYLON.SceneLoader.ImportMesh("",
-                Assets.meshes.Elf.rootUrl,
-                Assets.meshes.Elf.filename, scene, function (newMeshes) {
-                    newMeshes[0].scaling = new BABYLON.Vector3(1, 1, 1);
+            BABYLON.SceneLoader.ImportMeshAsync(
+                "",
+                Assets.meshes.Yeti.rootUrl,
+                Assets.meshes.Yeti.filename, scene, function (newMeshes) {
+                    newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
                 });
 
             BABYLON.SceneLoader.ImportMeshAsync(
