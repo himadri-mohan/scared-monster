@@ -81,11 +81,12 @@
             BABYLON.SceneLoader.ImportMeshAsync("", "https://assets.babylonjs.com/meshes/", "car.glb").then(() => {
                 const car = scene.getMeshByName("car");
                 car.rotation = new BABYLON.Vector3(Math.PI / 2, 0, -Math.PI / 2);
-                car.position.y = 0.20;
+                car.scaling = new BABYLON.Vector3(3, 3, 3);
+                car.position.y = 1;
                 car.position.x = -3;
-                car.position.z = 8;
+                car.position.z = 0;
 
-                const animCar = new BABYLON.Animation("carAnimation", "position.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                const animCar = new BABYLON.Animation("carAnimation", "position.z", 10, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
                 const carKeys = [];
 
@@ -100,7 +101,7 @@
                 });
 
                 carKeys.push({
-                    frame: 200,
+                    frame: 150,
                     value: -7
                 });
 
@@ -109,7 +110,7 @@
                 car.animations = [];
                 car.animations.push(animCar);
 
-                scene.beginAnimation(car, 0, 200, true);
+                scene.beginAnimation(car, 0, 100, true);
 
                 //wheel animation
                 const wheelRB = scene.getMeshByName("wheelRB");
@@ -121,6 +122,16 @@
                 scene.beginAnimation(wheelRF, 0, 30, true);
                 scene.beginAnimation(wheelLB, 0, 30, true);
                 scene.beginAnimation(wheelLF, 0, 30, true);
+            });
+
+            BABYLON.SceneLoader.ImportMeshAsync("", "/scenes/Dude/", "Dude.babylon", scene).then((result) => {
+                var dude = result.meshes[0];
+                dude.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02);
+                dude.position.y = 0;
+                dude.position.x = -1;
+                dude.position.z = -3;
+
+                scene.beginAnimation(result.skeletons[0], 0, 100, true, 1.0);
             });
 
             return scene;
