@@ -109,7 +109,7 @@
                 car.rotation = new BABYLON.Vector3(Math.PI / 2, 0, -Math.PI / 2);
                 car.scaling = new BABYLON.Vector3(3, 3, 3);
                 car.position.y = 1;
-                car.position.x = -3;
+                car.position.x = -2.5;
                 car.position.z = 0;
 
                 const animCar = new BABYLON.Animation("carAnimation", "position.z", 10, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
@@ -118,17 +118,17 @@
 
                 carKeys.push({
                     frame: 0,
-                    value: 8
+                    value: 5
                 });
 
                 carKeys.push({
-                    frame: 150,
-                    value: -7
+                    frame: 200,
+                    value: -6
                 });
 
                 carKeys.push({
-                    frame: 150,
-                    value: -7
+                    frame: 200,
+                    value: -6
                 });
 
                 animCar.setKeys(carKeys);
@@ -148,6 +148,16 @@
                 scene.beginAnimation(wheelRF, 0, 30, true);
                 scene.beginAnimation(wheelLB, 0, 30, true);
                 scene.beginAnimation(wheelLF, 0, 30, true);
+            });
+
+            BABYLON.SceneLoader.ImportMeshAsync("", "/scenes/Dude/", "Dude.babylon", scene).then((result) => {
+                var dude = result.meshes[0];
+                dude.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02);
+                dude.position.y = 0;
+                dude.position.x = -1;
+                dude.position.z = -3;
+
+                scene.beginAnimation(result.skeletons[0], 0, 100, true, 1.0);
             });
 
 
