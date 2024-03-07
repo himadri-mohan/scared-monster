@@ -100,7 +100,7 @@
 
 
             // Dude
-            BABYLON.SceneLoader.ImportMeshAsync("him", "https://assets.babylonjs.com/meshes/", "Dude.babylon", scene).then((result) => {
+            BABYLON.SceneLoader.ImportMeshAsync("him", Assets.meshes.dude.rootUrl, Assets.meshes.dude.filename, scene).then((result) => {
                 const dude = result.meshes[0];
                 dude.scaling = new BABYLON.Vector3(0.008, 0.008, 0.008);
 
