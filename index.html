@@ -149,6 +149,15 @@
                 scene.beginAnimation(wheelLB, 0, 30, true);
                 scene.beginAnimation(wheelLF, 0, 30, true);
             });
+		const walk = function (turn, dist) {
+        this.turn = turn;
+        this.dist = dist;
+    }
+    
+    const track = [];
+    track.push(new walk(180, 2.5));
+    track.push(new walk(0, 5));
+		
     BABYLON.SceneLoader.ImportMeshAsync("him", "/scenes/Dude/", "Dude.babylon", scene).then((result) => {
         var dude = result.meshes[0];
         dude.scaling = new BABYLON.Vector3(0.008, 0.008, 0.008);
